@@ -3,6 +3,9 @@
 const https = require('https');
 const http = require('http');
 const httpProxy = require('http-proxy');
+const express = require('express');
+const httpsRedirect = require('express-https-redirect');
+const helmet = require('helmet');
 const fs = require('fs');
 const jsonfile = require('jsonfile');
 
@@ -18,7 +21,6 @@ const options = {
 const proxyRules = config.rules;
 
 const proxy = httpProxy.createProxy();
-
 function handle(req, res) {
 
   if (req.headers.host in proxyRules) {
@@ -34,12 +36,15 @@ function handle(req, res) {
   return res.end('This is not the site you\'re looking for!');
 }
 
-function force(req, res) {
-    res.writeHead(302, {
-      'Location': "https://" + req.headers["host"] + req.url
-    });
-    res.end();
+
+const app = express();
+app.use(helmet());
+
+if (config.forceHttps) {
+  app.use(httpsRedirect())
 }
 
-https.createServer(options, handle).listen(443);
-http.createServer(config.forceHttps ? force : handle).listen(80);
+app.use(handle);
+
+https.createServer(options, app).listen(443);
+http.createServer(app).listen(80);
