@@ -1,0 +1,14 @@
+Description=proxy
+After=network.target
+
+[Service]
+Type=simple
+# Edit WorkingDirectory, User and Group as needed
+User=root
+Group=root
+ExecStart=$PROXY_NODEJS $PROXY_DIR/index.js $PROXY_DIR/config.json
+SyslogIdentifier=proxy
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

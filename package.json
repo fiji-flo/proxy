@@ -1,0 +1,23 @@
+{
+  "name": "proxy",
+  "version": "0.0.1",
+  "description": "proxy and route subdomains",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fiji-flo/proxy.git"
+  },
+  "author": "Florian Merz <flomerz@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fiji-flo/proxy/issues"
+  },
+  "homepage": "https://github.com/fiji-flo/proxy#readme",
+  "dependencies": {
+    "http-proxy": "^1.16.2",
+    "jsonfile": "^2.4.0"
+  }
+}
