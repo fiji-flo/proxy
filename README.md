@@ -46,7 +46,7 @@ The content of the file must be a simple JSON object:
   "rules": {
     "subdomain.example.com": "http://127.0.0.1:8888",
     "external.example.com": "https://www.google.com"
-  }.
+  },
   "ssl": {
     "key": "/etc/letsencrypt/live/example.com/privkey.pem",
     "cert": "/etc/letsencrypt/live/example.com/fullchain.pem",
