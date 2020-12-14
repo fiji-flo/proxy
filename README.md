@@ -48,9 +48,14 @@ The content of the file must be a simple JSON object:
     "external.example.com": "https://www.google.com"
   },
   "ssl": {
-    "key": "/etc/letsencrypt/live/example.com/privkey.pem",
-    "cert": "/etc/letsencrypt/live/example.com/fullchain.pem",
-    "ca": "/etc/letsencrypt/live/example.com/chain.pem"
+    "domains": {
+      "example.com": {
+        "key": "/etc/letsencrypt/live/example.com/privkey.pem",
+        "cert": "/etc/letsencrypt/live/example.com/fullchain.pem",
+        "ca": "/etc/letsencrypt/live/example.com/chain.pem"
+      }
+    },
+    "default": "example.com"
   },
   "forceHttps": true
 }

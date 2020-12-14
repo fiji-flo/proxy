@@ -4,8 +4,8 @@ After=network.target
 [Service]
 Type=simple
 # Edit WorkingDirectory, User and Group as needed
-User=root
-Group=root
+User=$USER
+Group=$USER
 ExecStart=$PROXY_NODEJS $PROXY_DIR/index.js $PROXY_DIR/config.json
 SyslogIdentifier=proxy
 Restart=always
